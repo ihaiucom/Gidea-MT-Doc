@@ -48,7 +48,10 @@ namespace generate
             }
 
             iosRoot = iosRoot.Replace("\\", "/");
+            webRoot = webRoot.Replace("\\", "/");
+
             string tmpRoot = webRoot + "tmp/";
+            string plistRoot = webRoot + "plist/";
 
             Console.WriteLine("iosRoot=" + iosRoot);
             Console.WriteLine("webRoot=" + webRoot);
@@ -67,6 +70,11 @@ namespace generate
                 return;
             }
 
+            if (Directory.Exists(plistRoot))
+                Directory.Delete(plistRoot, true);
+
+            Directory.CreateDirectory(plistRoot);
+
             StringWriter indexSW = new StringWriter();
 
 
@@ -74,18 +82,20 @@ namespace generate
             string plistTmp = File.ReadAllText(tmpRoot + "ipa.plist.tmp");
 
             string[] fileList = Directory.GetFiles(iosRoot, "*.ipa", SearchOption.AllDirectories);
-            for(int i = 0; i < fileList.Length; i ++)
+            List<string> list = new List<string>(fileList);
+            list.Sort((string a, string b) => { return b.CompareTo(a); });
+            for (int i = 0; i < list.Count; i ++)
             {
-                string ipaName = fileList[i].Replace("\\", "/").Replace(iosRoot, "");
+                string ipaName = list[i].Replace("\\", "/").Replace(iosRoot, "");
                 string ipaPlistName = ipaName.Replace("/", "_").Replace("\\", "").Replace(".", "-").Replace(" ", "--") + ".plist";
-                Console.WriteLine(fileList[i]);
-                Console.WriteLine( ipaName);
-                Console.WriteLine(ipaPlistName);
+                //Console.WriteLine(fileList[i]);
+                //Console.WriteLine( ipaName);
+                //Console.WriteLine(ipaPlistName);
 
                 indexSW.WriteLine(indexItemTmp.Replace("__IPA_NAME__", ipaName).Replace("__IPA_PLIST__", ipaPlistName));
                 indexSW.WriteLine("\n");
 
-                File.WriteAllText(webRoot + ipaPlistName, plistTmp.Replace("__IPD__NAME__", ipaName.Replace("\\", "/").Replace(" ", "%20")));
+                File.WriteAllText(plistRoot + ipaPlistName, plistTmp.Replace("__IPD__NAME__", ipaName.Replace("\\", "/").Replace(" ", "%20")));
                 Console.WriteLine(i + "\n" + ipaName);
             }
 
