@@ -1,0 +1,6 @@
+E:\wamp64\www\Gidea-MT-Doc\generate\generate\bin\Debug\generate.exe.config
+E:\wamp64\www\Gidea-MT-Doc\generate\generate\bin\Debug\generate.exe
+E:\wamp64\www\Gidea-MT-Doc\generate\generate\bin\Debug\generate.pdb
+E:\wamp64\www\Gidea-MT-Doc\generate\generate\obj\Debug\generate.csprojResolveAssemblyReference.cache
+E:\wamp64\www\Gidea-MT-Doc\generate\generate\obj\Debug\generate.exe
+E:\wamp64\www\Gidea-MT-Doc\generate\generate\obj\Debug\generate.pdb
