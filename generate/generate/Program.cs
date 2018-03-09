@@ -47,6 +47,7 @@ namespace generate
 
             }
 
+            iosRoot = iosRoot.Replace("\\", "/");
             string tmpRoot = webRoot + "tmp/";
 
             Console.WriteLine("iosRoot=" + iosRoot);
@@ -75,13 +76,16 @@ namespace generate
             string[] fileList = Directory.GetFiles(iosRoot, "*.ipa", SearchOption.AllDirectories);
             for(int i = 0; i < fileList.Length; i ++)
             {
-                string ipaName = fileList[i].Replace(iosRoot, "").Replace("\\", "/");
-                string ipaPlistName = ipaName.Replace("/", "_").Replace("\\", "") + ".plist";
+                string ipaName = fileList[i].Replace("\\", "/").Replace(iosRoot, "");
+                string ipaPlistName = ipaName.Replace("/", "_").Replace("\\", "").Replace(".", "-").Replace(" ", "--") + ".plist";
+                Console.WriteLine(fileList[i]);
+                Console.WriteLine( ipaName);
+                Console.WriteLine(ipaPlistName);
 
                 indexSW.WriteLine(indexItemTmp.Replace("__IPA_NAME__", ipaName).Replace("__IPA_PLIST__", ipaPlistName));
                 indexSW.WriteLine("\n");
 
-                File.WriteAllText(webRoot + ipaPlistName, plistTmp.Replace("__IPD__NAME__", ipaName));
+                File.WriteAllText(webRoot + ipaPlistName, plistTmp.Replace("__IPD__NAME__", ipaName.Replace("\\", "/").Replace(" ", "%20")));
                 Console.WriteLine(i + "\n" + ipaName);
             }
 
@@ -91,6 +95,7 @@ namespace generate
 
 
 
+            Console.ReadLine();
         }
     }
 }

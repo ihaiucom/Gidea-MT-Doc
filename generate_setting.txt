@@ -1,2 +1,2 @@
-iosRoot=../gametm-ios
+iosRoot=../gametm-ios/
 webRoot=./
