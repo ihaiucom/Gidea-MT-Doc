@@ -11,7 +11,7 @@
                                         <key>kind</key>
                                         <string>software-package</string>
                                         <key>url</key>
-                                        <string>http://mbqb.ihaiu.com/gametm-ios/__IPD__NAME__</string>
+                                        <string>http://mbqb.ihaiu.com/gidea_game_ios/__IPD__NAME__</string>
                                 </dict>
                                 <dict>
                                         <key>kind</key>
@@ -19,7 +19,7 @@
                                         <key>needs-shine</key>
                                         <true/>
                                         <key>url</key>
-                                        <string>http://mbqb.ihaiu.com/gametm-ios/logo_full.png</string>
+                                        <string>http://mbqb.ihaiu.com/Gidea-MT-Doc/logo_full.png</string>
                                 </dict>
                                 <dict>
                                         <key>kind</key>
@@ -27,7 +27,7 @@
                                         <key>needs-shine</key>
                                         <true/>
                                         <key>url</key>
-                                        <string>http://mbqb.ihaiu.com/gametm-ios/logo_icon.png</string>
+                                        <string>http://mbqb.ihaiu.com/Gidea-MT-Doc/logo_icon.png</string>
                                 </dict>
                         </array>
                         <key>metadata</key>

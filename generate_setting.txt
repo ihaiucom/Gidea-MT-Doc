@@ -1,2 +1,2 @@
-iosRoot=../gametm-ios/
+iosRoot=../gidea_game_ios/
 webRoot=./
